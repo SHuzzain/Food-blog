@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .font-logo{
+  @apply font-['Josefin_Sans',sans-serif]
+ }
+ .font-playfair-sc{
+  @apply font-['Playfair_Display_SC',_serif]
+ }
+ .font-playfair{
+  @apply font-['Playfair_Display',serif]
+ }
+ .font-lora {
+  @apply font-['Lora',_serif]
+ }
+ .header-icon{
+  @apply p-2 px-4 bg-[#f7f4ee] rounded-full
+ }
+ .footer-icon{
+  @apply p-3 px-5 rounded-full bg-[#242424] cursor-pointer
+ }
+ .header-text-hover{
+  @apply hover:text-[#66cc66] transition-colors duration-200
+ }
+}
+
+:root {
+font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+.bg-formImage{
+  background: url('./images/formBg.webp') ;
+  background-color: #f7f4ee;
+}
+
