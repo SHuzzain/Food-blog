@@ -19,6 +19,9 @@ export default {
       minWidth: {
         auto: "auto",
       },
+      backgroundColor: {
+        navPopBg: "#1a1a1a",
+      },
     },
   },
   plugins: [

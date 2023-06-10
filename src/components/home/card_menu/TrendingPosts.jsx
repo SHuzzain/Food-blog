@@ -50,10 +50,10 @@ function TrendingPosts() {
               key={index}
               className="bg-[#ffffff] rounded-md overflow-hidden shadow-sm flex-1 flex flex-col "
             >
-              <div className="w-full h-[35vh] hover:brightness-95 transition-all duration-200 cursor-pointer">
+              <div className="w-full h-[30vh] hover:brightness-95 transition-all duration-200 cursor-pointer">
                 <img
                   src={item?.images}
-                  className="min-w-full rounded-md max-w-full h-full bg-cover"
+                  className="min-w-full rounded-md max-w-full h-full !bg-cover"
                   alt="trending post image"
                 />
               </div>

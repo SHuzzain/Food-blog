@@ -5,10 +5,24 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 import { Bars3Icon, EllipsisVerticalIcon } from "@heroicons/react/24/solid";
+import { useDispatch } from "react-redux";
+import {
+  headerNavMenuBar,
+  headerNavSearchBar,
+} from "../../feature/HeaderNavData";
 
 function HeaderNav() {
+  const dispatch = useDispatch();
+
+  const headerSearchPop = (sts) => {
+    if (sts === "search") {
+      dispatch(headerNavSearchBar(true));
+    } else if (sts === "menu") {
+      dispatch(headerNavMenuBar(true));
+    }
+  };
   return (
-    <header className="z-20 top-0 sticky bg-white py-5 md::px-20 px-5 w-full">
+    <header className="z-20 top-0 sticky bg-white py-5 md:px-20 px-5 w-full">
       <div className=" flex items-center justify-between">
         <section className="flex items-center gap-10">
           <h1 className="font-logo font-bold text-3xl">LOGO</h1>
@@ -39,16 +53,22 @@ function HeaderNav() {
           </div>
         </section>
         <section className="flex items-center gap-6 ">
-          <div className="flex items-center gap-6">
-            <MagnifyingGlassIcon className="w-6" />
-            <ShoppingBagIcon className="w-6" />
+          <div className="flex items-center gap-6 [&>svg]:transition-colors [&>svg]:duration-500">
+            <MagnifyingGlassIcon
+              onClick={() => headerSearchPop("search")}
+              className="w-6 hover:text-green-400 "
+            />
+            <ShoppingBagIcon className="w-6 hover:text-green-400" />
 
-            <Bars3Icon className="w-7" />
+            <Bars3Icon
+              onClick={() => headerSearchPop("menu")}
+              className="w-7 md:hidden hover:text-green-400"
+            />
           </div>
           <div className="flex items-center gap-2 [&>i]:header-icon max-xl:hidden">
-            <i className="fa fa-facebook text-base text-[#3b59a2]" />
-            <i className="fa fa-twitter text-base text-[#55ACEE]" />
-            <i className="fa fa-instagram text-base text-fuchsia-600" />
+            <i className="fa fa-facebook text-base text-[#3b59a2] mediaIcon-translate" />
+            <i className="fa fa-twitter text-base text-[#55ACEE] mediaIcon-translate" />
+            <i className="fa fa-instagram text-base text-fuchsia-600 mediaIcon-translate" />
           </div>
         </section>
       </div>

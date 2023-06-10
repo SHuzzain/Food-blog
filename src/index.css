@@ -29,6 +29,12 @@
  .header-text-hover{
   @apply hover:text-[#66cc66] transition-colors duration-200
  }
+ .mediaIcon-translate{
+  @apply hover:-translate-y-1 transition-transform duration-200
+ }
+ .border-animate{
+  @apply w-0 h-[2px] bg-white absolute transition-[width] duration-700 [transition-timing-function:cubic-bezier(0.45,_-0.27,_0.62,_1.01)]
+ }
 }
 
 :root {

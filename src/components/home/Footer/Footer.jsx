@@ -16,32 +16,34 @@ function Footer() {
           </section>
           <section>
             <table>
-              {footerRec.map((value, index) => (
-                <tr
-                  className="text-[#afb8bb] first:[&>tr]:pt-0 text-[17px] font-playfair font-semibold"
-                  key={index}
-                >
-                  <td className="pr-32 py-2">
-                    <span className="cursor-pointer hover:text-green-400">
-                      {value}
-                    </span>
-                  </td>
-                  <td className="">
-                    <span className="cursor-pointer hover:text-green-400">
-                      {footerNav[index]}
-                    </span>
-                  </td>
-                </tr>
-              ))}
+              <tbody>
+                {footerRec.map((value, index) => (
+                  <tr
+                    className="text-[#afb8bb] first:[&>tr]:pt-0 text-[17px] font-playfair font-semibold"
+                    key={index}
+                  >
+                    <td className="pr-32 py-2">
+                      <span className="cursor-pointer hover:text-green-400">
+                        {value}
+                      </span>
+                    </td>
+                    <td className="">
+                      <span className="cursor-pointer hover:text-green-400">
+                        {footerNav[index]}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
           </section>
 
           <section className="flex items-start gap-2 [&>i]:footer-icon ">
-            <i className="fa fa-facebook text-base hover:-translate-y-1 transition-transform duration-200" />
-            <i className="fa fa-twitter text-base hover:-translate-y-1 transition-transform duration-200" />
-            <i className="fa fa-instagram text-base hover:-translate-y-1 transition-transform duration-200" />
-            <i className="fa fa-youtube text-base hover:-translate-y-1 transition-transform duration-200" />
-            <i className="fa fa-tumblr text-base hover:-translate-y-1 transition-transform duration-200" />
+            <i className="fa fa-facebook text-base mediaIcon-translate" />
+            <i className="fa fa-twitter text-base mediaIcon-translate" />
+            <i className="fa fa-instagram text-base mediaIcon-translate" />
+            <i className="fa fa-youtube text-base mediaIcon-translate" />
+            <i className="fa fa-tumblr text-base mediaIcon-translate" />
           </section>
         </div>
         <section className="w-full h-[2px] bg-[#363636] mt-20 mb-8" />
