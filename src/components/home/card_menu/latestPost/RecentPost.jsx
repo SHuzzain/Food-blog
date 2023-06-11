@@ -16,7 +16,7 @@ function RecentPost() {
     const snapImagesDataLength = [...Array(3)].map((_, index) => index === 0);
     setPagePosition((preVal) => ({ id: [...snapImagesDataLength] }));
   }, []);
-  console.log(pagePosition);
+
   const title = [
     "Meal Prep Breakfast For The Week",
     "Lactose Free Homemade Cheese",

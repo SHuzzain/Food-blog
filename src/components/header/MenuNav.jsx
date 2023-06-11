@@ -34,7 +34,7 @@ export const MenuNav = ({ status }) => {
       });
     }
   }, [status]);
-  console.log(status);
+
   return (
     <div
       className={`md:hidden fixed flex flex-col gap-7 bg-navPopBg w-full ${

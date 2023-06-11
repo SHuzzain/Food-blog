@@ -71,6 +71,9 @@ function SearchNav({ status }) {
               <MagnifyingGlassIcon className="w-[0.8em] text-white" />
             </div>
           </label>
+          <button hidden type="submit">
+            sumbit
+          </button>
         </Form>
       </div>
     </div>

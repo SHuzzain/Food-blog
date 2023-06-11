@@ -55,4 +55,13 @@ body {
   background: url('./images/formBg.webp') ;
   background-color: #f7f4ee;
 }
+.linearGradientLine::after{
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, #66cc66 0%, #66cc66 60%, rgba(255, 255, 255, 0) 100%);
+  top: 0;
+  left: 0;
+}
 
