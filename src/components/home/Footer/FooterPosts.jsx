@@ -29,7 +29,7 @@ function FooterPosts() {
           className="w-full relative h-full group overflow-hidden"
         >
           <img
-            className="max-w-full min-w-full h-full bg-cover"
+            className="max-w-full min-w-full h-full object-cover"
             src={item?.images}
             alt="footer posts"
           />
