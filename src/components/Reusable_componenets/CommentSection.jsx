@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useId } from "react";
 import { Form } from "react-router-dom";
 
 export const CommentSection = () => {
+  const CommentId = useId();
   return (
     <div className="space-y-8 pt-16 mt-16 border-t border-gray-400/25">
       <h1 className="text-4xl font-playfair  font-bold">Leave a comment</h1>
@@ -35,6 +36,25 @@ export const CommentSection = () => {
           id=""
           rows={6}
         />
+        <div className="col-span-2 ">
+          <input
+            className="accent-green-400"
+            id={"checkBoxComment"}
+            name="comment"
+            type="checkbox"
+          />
+          <label
+            className="text-gray-400 text-sm"
+            id={"checkBoxComment"}
+            htmlFor={"comment"}
+          >
+            {" "}
+            I agree that my submitted data is being{" "}
+            <span className="text-green-400 cursor-pointer">
+              collected and stored. *
+            </span>
+          </label>
+        </div>
       </Form>
     </div>
   );
