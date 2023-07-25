@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { EyeIcon, ChatBubbleLeftRightIcon } from "@heroicons/react/24/solid";
 import { useRef } from "react";
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 function RecipesCard() {
   const [cardData, setCardData] = useState([]);
   const [scrollTograp, setScrollToGrab] = useState({
     pressed: false,
-    stratX: 0,
-    scrollLeft: 0,
+    pages: NaN,
   });
-  const cardRef = useRef(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const category = ["dinner", "holiday", "recipes"];
   const title = [
     "The Next Level Birthday Carrot Cake",
@@ -36,80 +36,86 @@ function RecipesCard() {
     }));
     setCardData([...cardData]);
   }, []);
-  const handleMouseDown = (e) => {
-    setScrollToGrab(() => ({
-      pressed: true,
-      stratX: e.pageX - cardRef.current.offsetLeft,
-      scrollLeft: cardRef.current.scrollLeft,
-    }));
+  const adjustCardHeights = () => {
+    setWindowWidth(window.innerWidth);
   };
-  const handleMouseUp = (e) => {
-    setScrollToGrab((preVal) => ({
-      ...preVal,
-      pressed: false,
-    }));
-  };
-  const handleMouseMove = (e) => {
-    if (scrollTograp.pressed) {
-      e.preventDefault();
-      const x = e.pageX - cardRef.current.offsetLeft;
-      const snapScroll = (x - scrollTograp.stratX) * 3;
-      cardRef.current.scrollLeft = scrollTograp.scrollLeft - snapScroll;
-    }
-  };
+  useEffect(() => {
+    window.addEventListener("resize", adjustCardHeights);
 
+    return () => {
+      window.removeEventListener("resize", adjustCardHeights);
+    };
+  }, []);
+  useEffect(() => {
+    if (windowWidth >= 1600) {
+      scrollTograp.pages = 5;
+    } else if (windowWidth >= 1024) {
+      scrollTograp.pages = 4;
+    } else if (windowWidth >= 765) {
+      scrollTograp.pages = 3;
+    } else if (windowWidth >= 450) {
+      scrollTograp.pages = 1;
+    }
+    setScrollToGrab(scrollTograp);
+  }, [windowWidth]);
   return (
-    <article
-      ref={cardRef}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
-      className="grid grid-flow-col [scroll-snap-type:_inline_mandatory] select-none lg:auto-cols-[25%] md:auto-cols-[35%] sm:auto-cols-[50%] auto-cols-[100%] overflow-x-scroll overflow-y-hidden  scrollbar-hide scroll-smooth"
-    >
-      {cardData.map((item, index) => (
-        <section
-          key={item?.id}
-          className={` group w-full snap-start  h-[400px] transition-all duration-200 relative flex items-end justify-center`}
-        >
-          <img
-            className="object-cover w-full h-full"
-            src={item?.images}
-            alt="card"
-          />
-          <div
-            className={`absolute top-0 ${
-              scrollTograp.pressed ? "cursor-grabbing" : `cursor-grab`
-            } left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-80 group-hover:opacity-90 transition-opacity duration-500`}
-          />
-          <div className="absolute bottom-0  space-y-4 pb-8 px-8 [&>section>*]:hover:cursor-pointer">
-            <section className="flex justify-center">
-              <h6 className="bg-[#f7f4ee] text-red-500 rounded px-2 text-sm font-bold font-playfair capitalize">
-                {item?.category}
-              </h6>
-            </section>
-            <section className="md:text-2xl text-base  whitespace-pre-line text-center text-white font-playfair font-bold">
-              <h4>{item?.title}</h4>
-            </section>
-            <section className="justify-center flex gap-x-5 gap-y-1 text-white flex-wrap">
-              <div className="flex items-center gap-1">
-                <small>Novermber</small>
-                <small>6, </small>
-                <small>2023</small>
-              </div>
-              <div className="flex items-center gap-4">
-                <section className="flex items-center gap-1">
-                  <EyeIcon className="w-4" />
-                  <small>{item?.view}</small>
+    <article className=" overflow-x-auto overflow-y-hidden scrollbar-hide scroll-smooth">
+      <Splide
+        options={{
+          perPage: scrollTograp.pages,
+          pagination: false,
+          drag: "free",
+          arrows: false,
+          autoplay: true,
+        }}
+      >
+        {cardData.map((item, index) => (
+          <SplideSlide className="">
+            <section
+              key={index}
+              className={`min-h-[400px] group transition-all duration-200 relative flex items-end justify-center`}
+            >
+              <img
+                className=" absolute object-cover w-full h-full"
+                src={item?.images}
+                alt="card"
+              />
+              <div
+                className={`absolute top-0 ${
+                  scrollTograp.pressed ? "cursor-grabbing" : `cursor-grab`
+                } left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-80 group-hover:opacity-90 transition-opacity duration-500`}
+              />
+              <div className="z-10 space-y-4 pb-8 px-8 [&>section>*]:hover:cursor-pointer">
+                <section className="flex justify-center">
+                  <h6 className="bg-[#f7f4ee] text-red-500 rounded px-2 text-sm font-bold font-playfair capitalize">
+                    {item?.category}
+                  </h6>
                 </section>
-                <section className="flex items-center gap-1">
-                  <ChatBubbleLeftRightIcon className="w-4" />
-                  <small>{item?.comment}</small>
+                <section className="md:text-2xl text-base  whitespace-pre-line text-center text-white font-playfair font-bold">
+                  <h4>{item?.title}</h4>
+                </section>
+                <section className="justify-center flex gap-x-5 gap-y-1 text-white flex-wrap">
+                  <div className="flex items-center gap-1">
+                    <small>Novermber</small>
+                    <small>6, </small>
+                    <small>2023</small>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <section className="flex items-center gap-1">
+                      <EyeIcon className="w-4" />
+                      <small>{item?.view}</small>
+                    </section>
+                    <section className="flex items-center gap-1">
+                      <ChatBubbleLeftRightIcon className="w-4" />
+                      <small>{item?.comment}</small>
+                    </section>
+                  </div>
                 </section>
               </div>
             </section>
-          </div>
-        </section>
-      ))}
+          </SplideSlide>
+        ))}
+      </Splide>
     </article>
   );
 }

@@ -38,7 +38,7 @@ export const CommentSection = () => {
         />
         <div className="col-span-2 ">
           <input
-            className="accent-green-400"
+            className="accent-green-400 peer"
             id={"checkBoxComment"}
             name="comment"
             type="checkbox"
@@ -54,6 +54,11 @@ export const CommentSection = () => {
               collected and stored. *
             </span>
           </label>
+          <div className="flex w-full py-10 peer-checked:[&>button]:commnetSectionBtn ">
+            <button className="py-5 px-14 font-playfair text-gray-500 bg-[#f7f4ee] font-semibold text-sm   transition-colors duration-200 rounded-md">
+              Leave the Comment
+            </button>
+          </div>
         </div>
       </Form>
     </div>

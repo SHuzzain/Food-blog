@@ -3,6 +3,8 @@ import RootLayout from "./root/RootLayout";
 import ErrorPage from "./pages/error/ErrorPage";
 import HomePage from "./pages/HomePage";
 import CardDetailPage from "./pages/CardDetailPage";
+import "@splidejs/react-splide/css";
+import "@splidejs/react-splide/css/core";
 
 function App() {
   const rounte = createBrowserRouter([

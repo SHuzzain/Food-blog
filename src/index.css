@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,7 +36,19 @@
  .border-animate{
   @apply w-0 h-[2px] bg-white absolute transition-[width] duration-700 [transition-timing-function:cubic-bezier(0.45,_-0.27,_0.62,_1.01)]
  }
+
 }
+@layer utilities{
+  .commnetSectionBtn{
+    box-shadow: 0px 0px 13px 0px rgba(252, 69, 68, 0.80);
+    background-color: rgb(252, 69, 68);
+    color: white;
+  }
+  .commnetSectionBtn:hover{
+    background-color: #d63534;
+  }
+}
+
 
 :root {
 font-family: 'Roboto', sans-serif;

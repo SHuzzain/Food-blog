@@ -53,7 +53,7 @@ function TrendingPosts() {
               <div className="w-full h-[30vh] hover:brightness-95 transition-all duration-200 cursor-pointer">
                 <img
                   src={item?.images}
-                  className="min-w-full rounded-md max-w-full h-full !bg-cover"
+                  className="min-w-full rounded-md max-w-full h-full object-cover"
                   alt="trending post image"
                 />
               </div>
