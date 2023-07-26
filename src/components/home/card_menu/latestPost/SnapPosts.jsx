@@ -63,6 +63,9 @@ function SnapPosts() {
           drag: "free",
           arrows: false,
           autoplay: true,
+          snap: true,
+          type: "loop",
+          paginationDirection: "ttb",
         }}
       >
         {snapImage.map((item, index) => (

@@ -7,6 +7,7 @@ function RecipesCard() {
   const [scrollTograp, setScrollToGrab] = useState({
     pressed: false,
     pages: NaN,
+    type: "slide",
   });
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const category = ["dinner", "holiday", "recipes"];
@@ -40,6 +41,7 @@ function RecipesCard() {
     setWindowWidth(window.innerWidth);
   };
   useEffect(() => {
+    adjustCardHeights();
     window.addEventListener("resize", adjustCardHeights);
 
     return () => {
@@ -58,6 +60,15 @@ function RecipesCard() {
     }
     setScrollToGrab(scrollTograp);
   }, [windowWidth]);
+
+  useEffect(() => {
+    const unsub = setTimeout(() => {
+      scrollTograp.type = "loop";
+      setScrollToGrab(scrollTograp);
+    }, 2000);
+    return () => clearTimeout(unsub);
+  }, []);
+  console.log(scrollTograp.type);
   return (
     <article className=" overflow-x-auto overflow-y-hidden scrollbar-hide scroll-smooth">
       <Splide
@@ -66,14 +77,20 @@ function RecipesCard() {
           pagination: false,
           drag: "free",
           arrows: false,
+          type: scrollTograp?.type,
+          height: 400,
+          heightRatio: 0.3,
           autoplay: true,
+          focus: "end",
+          snap: true,
+          interval: 5000,
         }}
       >
         {cardData.map((item, index) => (
           <SplideSlide className="">
             <section
               key={index}
-              className={`min-h-[400px] group transition-all duration-200 relative flex items-end justify-center`}
+              className={`h-full  group transition-all duration-200 relative flex items-end justify-center`}
             >
               <img
                 className=" absolute object-cover w-full h-full"
