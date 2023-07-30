@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { ChatBubbleLeftRightIcon, EyeIcon } from "@heroicons/react/24/solid";
-import { AuthorDetail } from "./AuthorDetail/";
+
 import { DishDetail } from "./DishDetail";
 import { CommentSection } from "../Reusable_componenets/CommentSection";
+import { AuthorDetail } from "../Reusable_componenets/AuthorDetail";
+import FoodRelatedPost from "../Reusable_componenets/FoodRelatedPost";
 
 function CardDetailLeft() {
   const [postDetail, setPostDetail] = useState({});
@@ -162,32 +164,9 @@ function CardDetailLeft() {
         title={postDetail?.author?.title}
         decs={postDetail?.author?.decs}
       />
-      <article className="space-y-8 pt-16 mt-16 border-t border-gray-400/25">
-        <h1 className="font-playfair font-bold text-4xl">You May Also Like</h1>
-        <div className="flex items-center gap-5">
-          {postDetail?.categoryRelatedFood?.map((relatedFoodItem) => (
-            <section className="flex flex-col gap-y-7">
-              <div className="rounded-md overflow-hidden">
-                <img
-                  className="object-cover"
-                  src={relatedFoodItem?.image}
-                  alt="cardPost"
-                />
-              </div>
-              <div className="space-y-4">
-                <h4 className="text-xl font-bold font-playfair">
-                  {relatedFoodItem?.title}
-                </h4>
-                <section className="flex items-center gap-1 text-gray-400">
-                  <small>Novermber</small>
-                  <small>6, </small>
-                  <small>2023</small>
-                </section>
-              </div>
-            </section>
-          ))}
-        </div>
-      </article>
+      <hr className="border-t border-gray-400/25 my-10" />
+      <FoodRelatedPost postDetails={postDetail?.categoryRelatedFood} />
+      <hr className="border-t border-gray-400/25 my-10" />
       <CommentSection />
     </section>
   );

@@ -1,11 +1,20 @@
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import React, { useId } from "react";
 import { Form } from "react-router-dom";
 
-export const CommentSection = () => {
+export const CommentSection = ({ title, toggle, open }) => {
   const CommentId = useId();
   return (
-    <div className="space-y-8 pt-16 mt-16 border-t border-gray-400/25">
-      <h1 className="text-4xl font-playfair  font-bold">Leave a comment</h1>
+    <div className="space-y-8">
+      <header className="flex justify-between items-center">
+        <h1 className="text-xl md:text-4xl font-playfair  font-bold">
+          {!title ? "Leave a comment" : title}
+        </h1>
+        {open && (
+          <XMarkIcon onClick={() => toggle(!open)} className="w-7 stroke-2" />
+        )}
+      </header>
+
       <Form className="grid grid-cols-2 font-playfair gap-10 text-gray-900">
         <label
           className="border flex items-center px-5 border-gray-400/50 h-14 rounded-md overflow-hidden"

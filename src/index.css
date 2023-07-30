@@ -36,6 +36,13 @@
  .border-animate{
   @apply w-0 h-[2px] bg-white absolute transition-[width] duration-700 [transition-timing-function:cubic-bezier(0.45,_-0.27,_0.62,_1.01)]
  }
+ .linearAfter {
+  @apply after:absolute after:bg-[linear-gradient(to_bottom,_#66cc66_0%,_#66cc66_60%,_rgba(255,_255,_255,_0)_100%)] after:top-0 after:left-0 after:w-[2px] after:h-full
+ }
+ .authCardShadow {
+  @apply shadow-[_0px,_8px,_62px,_rgba(0,_0,_0,_0.05)]
+ }
+
 
 }
 @layer utilities{
@@ -71,10 +78,14 @@ body {
 .linearGradientLine::after{
   content: '';
   position: absolute;
-  width: 1px;
+  width: 1.5px;
   height: 100%;
   background: linear-gradient(to bottom, #66cc66 0%, #66cc66 60%, rgba(255, 255, 255, 0) 100%);
   top: 0;
   left: 0;
 }
+ .bgShadow{
+      box-shadow: 0 0 0 100vmax #f7f4ee;
+      clip-path: inset(0 -100vmax)
+ }
 

@@ -22,6 +22,9 @@ export default {
       backgroundColor: {
         navPopBg: "#1a1a1a",
       },
+      fontSize: {
+        clamp_1: "clamp(14px, 2vw, 34px)",
+      },
     },
   },
   plugins: [
