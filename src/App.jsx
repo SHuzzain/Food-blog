@@ -6,6 +6,7 @@ import CardDetailPage from "./pages/CardDetailPage";
 import "@splidejs/react-splide/css";
 import "@splidejs/react-splide/css/core";
 import CardRecipes from "./pages/CardRecipes";
+import { FoodDetails } from "./pages/FoodDetails";
 
 function App() {
   const rounte = createBrowserRouter([
@@ -17,6 +18,7 @@ function App() {
         { index: true, element: <HomePage /> },
         { path: "card+detail", element: <CardDetailPage /> },
         { path: "cardRecipe", element: <CardRecipes /> },
+        { path: "foodDetails", element: <FoodDetails /> },
       ],
     },
   ]);

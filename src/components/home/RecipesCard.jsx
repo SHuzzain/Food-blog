@@ -51,14 +51,17 @@ function RecipesCard() {
   useEffect(() => {
     if (windowWidth >= 1600) {
       scrollTograp.pages = 5;
+      setScrollToGrab(scrollTograp);
     } else if (windowWidth >= 1024) {
       scrollTograp.pages = 4;
+      setScrollToGrab(scrollTograp);
     } else if (windowWidth >= 765) {
       scrollTograp.pages = 3;
+      setScrollToGrab(scrollTograp);
     } else if (windowWidth >= 450) {
       scrollTograp.pages = 1;
+      setScrollToGrab(scrollTograp);
     }
-    setScrollToGrab(scrollTograp);
   }, [windowWidth]);
 
   useEffect(() => {
@@ -68,7 +71,7 @@ function RecipesCard() {
     }, 2000);
     return () => clearTimeout(unsub);
   }, []);
-  console.log(scrollTograp.type);
+
   return (
     <article className=" overflow-x-auto overflow-y-hidden scrollbar-hide scroll-smooth">
       <Splide
@@ -87,7 +90,7 @@ function RecipesCard() {
         }}
       >
         {cardData.map((item, index) => (
-          <SplideSlide className="">
+          <SplideSlide>
             <section
               key={index}
               className={`h-full  group transition-all duration-200 relative flex items-end justify-center`}

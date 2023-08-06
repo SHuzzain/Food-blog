@@ -22,7 +22,7 @@ function HeaderNav() {
     }
   };
   return (
-    <header className="z-20 top-0 sticky bg-white py-5 md:px-20 px-5 w-full">
+    <header className="z-20 top-0 sticky shadow bg-white py-5 md:px-20 px-5 w-full">
       <div className=" flex items-center justify-between">
         <h1 className="font-logo font-bold text-3xl">LOGO</h1>
         <section className="flex items-center gap-10">

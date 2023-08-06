@@ -5,7 +5,7 @@ function FoodRelatedPost({ postDetails }) {
     <article className={`space-y-8 `}>
       <h1 className="font-playfair font-bold text-4xl">You May Also Like</h1>
       <div
-        className={`grid lg:grid-cols-${postDetails?.length} max-sm:grid-cols-1 max-lg:grid-cols-2 gap-5`}
+        className={`grid grid-cols-${postDetails?.length} max-sm:grid-cols-1 max-lg:grid-cols-2 gap-5`}
       >
         {postDetails?.map((relatedFoodItem, index) => (
           <section key={index} className="flex flex-col gap-y-7 ">
