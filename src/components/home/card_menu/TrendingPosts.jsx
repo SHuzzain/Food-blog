@@ -38,7 +38,7 @@ function TrendingPosts() {
       <section className="container space-y-4 bg-no-repeat max-w-100 mx-auto px-5 py-7">
         <div className="font-playfair grid justify-center gap-4">
           <VerticalLine />
-          <h1 className="text-4xl font-bold text-center">Trending Posts</h1>
+          <h1 className="text-4xl font-bold text-center">Trending </h1>
           <p className="text-gray-400 text-center w-[calc(100%-25%)] mx-auto">
             Are you really into cooking? These homemade meal recipes will
             totally blow the minds of your family members.
